@@ -15,15 +15,19 @@ import Autoconfigurewb from "../../components/wblogin/Autoconfigurewb";
 import Createassets from "../../components/login/Createassets";
 import Enableassets from "../../components/login/Enableassets";
 import Transmitassets from "../../components/login/Transmitassets";
-import TabMenubar from "../../components/tabmenubar/TabMenubar";
-import Hero from "../../components/hero/Hero";
+import { Menubar } from "primereact/menubar";
 import { NavLink } from "react-router-dom";
+import { BsGlobe2 } from "react-icons/bs";
+import { useToken } from "../../components/App/useToken";
 
 //      <Hero />
 
 const Admincentral = () => {
   const [activeone, setActiveone] = useState(0);
   const [activetwo, setActivetwo] = useState(0);
+
+  const usetoken = new useToken();
+  const [user, setUser] = useState(usetoken.getUser());
 
   const wizardItems = [
     {
@@ -91,14 +95,31 @@ const Admincentral = () => {
 
   return (
     <>
-<div>
-        <NavLink to="/">
-          <img
-            className="h-8rem w-full"
-            src={"images/intrasettle_White.svg"}
-            alt="logo"
-          />
-        </NavLink>
+      <div>
+        <Menubar
+          start={
+            <NavLink to="/">
+              <img
+                src={"https://intrasettle.com/static/img/intrasettle_white.svg"}
+                alt="logo"
+                style={{ width: "12rem" }}
+              />
+            </NavLink>
+          }
+          // model={items.cbank}
+          end={
+            <>
+              <NavLink to="/cb-login">
+                <BsGlobe2 className="text-3xl mr-3 text-blue-500" />
+                <span className="text-2xl text-white">
+                  The {user.organization} , powered by Intrasettle
+                </span>
+              </NavLink>
+            </>
+          }
+          // style={{ fontSize: "1.4rem" }}
+          className="pt-4 pb-4 layout-topbar"
+        />
       </div>
 
       <div className="grid p-fluid p-5">
@@ -117,8 +138,7 @@ const Admincentral = () => {
           </div>
         </div>
 
-        <div className="row-12  col-12 md:col-6 p-5">
-        </div>
+        <div className="row-12  col-12 md:col-6 p-5"></div>
       </div>
     </>
   );

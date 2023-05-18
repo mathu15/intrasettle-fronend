@@ -523,7 +523,7 @@ const PvpAtomic = ({ data, setData }) => {
     <div class="grid pl-7">
       <div class="col-12 ">
         <div class="grid gap-4">
-          <div class="card col-5 border-1 border-100 ">
+          <div class="card col-8 border-1 border-100 ">
             <TabMenu
               model={pvpwizz}
               id={wizardItems.id}
@@ -577,7 +577,7 @@ const PvpAtomic = ({ data, setData }) => {
             </div>
           </div>
 
-          <div className="card col-5 border-1 border-100">
+          <div className="card col-8 border-1 border-100">
             <TabMenu
               model={dataItems}
               id={dataItems.id}

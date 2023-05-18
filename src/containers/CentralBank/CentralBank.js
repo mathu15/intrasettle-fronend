@@ -1,4 +1,4 @@
-import React, { useState, useEffect }  from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, Route, useHistory } from "react-router-dom";
 import { Menubar } from "primereact/menubar";
 import { BsBank, BsGlobe2 } from "react-icons/bs";
@@ -15,30 +15,27 @@ import CBVisiblity from "../../components/CBtabmenu/CBVisiblity";
 
 const CentralBank = () => {
   const history = useHistory();
-//  if(useToken.getUser().marker)
+  //  if(useToken.getUser().marker)
   const usetoken = new useToken();
   const [user, setUser] = useState(usetoken.getUser());
 
   const Redirectnonconfigured = () => {
-     if(!user || user.marker == ''){
-	     alert ("The system is not configured");
+    if (!user || user.marker == "") {
+      alert("The system is not configured");
       history.push("/");
-     }
+    }
   };
 
-  
   useEffect(() => {
-     gotoproperrole();
+    gotoproperrole();
   }, [user.role]); //
 
- const gotoproperrole = async () => {
-
-     if(user.role == "Wholesale bank") {
-             alert("Logged in as Wholesale bank, going to Wholesale bank ");
-                history.push('/wholesale-bank-one')
-     }
+  const gotoproperrole = async () => {
+    if (user.role == "Wholesale bank") {
+      alert("Logged in as Wholesale bank, going to Wholesale bank ");
+      history.push("/wholesale-bank-one");
+    }
   };
-
 
   const wizardItems = [
     {
@@ -95,15 +92,12 @@ const CentralBank = () => {
         // model={items.cbank}
         end={
           <>
-
-     <NavLink to="/cb-login">
+            <NavLink to="/cb-login">
               <BsGlobe2 className="text-3xl mr-3 text-blue-500" />
               <span className="text-2xl text-white">
                 The {user.organization} , powered by Intrasettle
               </span>
             </NavLink>
-
-
           </>
         }
         // style={{ fontSize: "1.4rem" }}
